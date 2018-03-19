@@ -1,11 +1,11 @@
 
 <div class="container">
-	<app-header></app-header>
+	<app-header (navSelection)="onNavigate($event)"></app-header>
   <div class="row">
     <div class="col-md-12">
       
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <app-recipes *ngIf="navSelected === 'recipe'"></app-recipes>
+      <app-shopping-list *ngIf="navSelected !== 'recipe'"></app-shopping-list>
 
     </div>
   </div>
