@@ -10,10 +10,9 @@ export class AppComponent {
 navSelected = 'recipe';
 
 
-onNavigate(featured : string){
-
-	this.navSelected=featured;
+onNavigate(featured: string) {
+ this.navSelected = featured;
 
 }
- 
+
 }
