@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -51,15 +52,26 @@ export class RecipeEditComponent implements OnInit {
     }
     this.recipeForm = new FormGroup({
       'name' : new FormControl(recipeName, Validators.required),
-      'imagePath': new FormControl(imagePath, Validators.required),
       'description': new FormControl(description, Validators.required),
+      'imagePath': new FormControl(imagePath, Validators.required),
       'ingredient': recipeingredients
     });
   }
 
 
   onSubmit() {
-    console.log(this.recipeForm);
+    const newRecipe = new Recipe(
+      this.recipeForm.value['name'],
+      this.recipeForm.value['description'],
+      this.recipeForm.value['imagePath'],
+      this.recipeForm.value['ingredient']
+    );
+    console.log(newRecipe);
+    if (this.editMode) {
+      this.recipeService.updateRecipe(this.id, newRecipe);
+    } else {
+      this.recipeService.addRecipe(newRecipe);
+    }
   }
 
   onAddIngredient() {
@@ -69,6 +81,13 @@ export class RecipeEditComponent implements OnInit {
         'amount': new FormControl(null, Validators.required)
       })
     );
+  }
+
+  ondeleteIngredient(index: number) {
+
+    // (<FormArray>this.recipeForm.get('ingredient')).splice(index, 1);
+    console.log(index);
+
   }
 
 }
