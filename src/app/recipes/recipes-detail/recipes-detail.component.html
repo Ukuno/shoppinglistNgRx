@@ -14,14 +14,14 @@
 </div>
 
 <div class="row">
-	<div class="col-xs-12">	
+	<div class="col-xs-12">
 		<div class="btn-group" appdropdown>
 			<button class="btn btn-primary dropdown-toggle"> Manage Recipe <span class="caret"></span></button>
-		
+
 			<ul class="dropdown-menu">
 				<li><a (click)="onAddToShoppingList()" >Add to shopping list</a></li>
 				<li><a (click)='editRecipe()' >Edit Recipe</a></li>
-				<li><a >Delete Recipe</a></li>
+				<li><a (click)='ondeleteRecipe()'>Delete Recipe</a></li>
 			</ul>
 	   </div>
 	</div>
@@ -39,6 +39,6 @@
 					<strong>Name</strong> : {{ ingredient.name }}  ~   <strong>Amount</strong> - ({{ ingredient.amount}})
 				</li>
 		</ul>
-		
+
 	</div>
 </div>
