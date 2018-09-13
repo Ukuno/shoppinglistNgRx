@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataSave } from '../shared/data-save-service';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private dataSave: DataSave) { }
 
   ngOnInit() {
+  }
+
+  onSave() {
+    this.dataSave.saveData()
+    .subscribe(
+      (response: Response) => {
+        console.log(response);
+      }
+    );
   }
 
 }

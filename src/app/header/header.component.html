@@ -4,23 +4,23 @@
 		<div class="navbar-header">
 
 			<a routerLink="/" class="navbar-brand">Shopping List</a>
-			
+
 		</div>
 
 		<div class="navbar-default">
 
 			<ul class="nav navbar-nav">
-				
+
 				<li routerLinkActive="active"><a routerLink="/recipe">Recipes</a></li>
-				<li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>	
+				<li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown" appdropdown>
-					
+
 					<a  class="dropdown-toggle" role="button" >Manage<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a >Save data</a></li>
+						<li><a (click)="onSave()">Save data</a></li>
 						<li><a >Fetch data</a></li>
 					</ul>
 
