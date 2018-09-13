@@ -19,9 +19,12 @@ export class HeaderComponent implements OnInit {
     this.dataSave.saveData()
     .subscribe(
       (response: Response) => {
-        console.log(response);
       }
     );
+  }
+
+  onFetch() {
+    this.dataSave.fetchData();
   }
 
 }
