@@ -22,6 +22,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
 import { ConfigFile } from './config';
+import { AuthGuard } from './auth/auth-guard.service';
 
 
 
@@ -50,7 +51,7 @@ import { ConfigFile } from './config';
     AppRoutingModule
 
   ],
-  providers: [ShoppingListService, RecipeService, DataSave, AuthService, ConfigFile],
+  providers: [ShoppingListService, RecipeService, DataSave, AuthService, ConfigFile, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
