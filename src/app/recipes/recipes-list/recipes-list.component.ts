@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { AuthService } from '../../auth/auth.service';
 
 
 
@@ -18,7 +19,10 @@ subscription: Subscription;
 
 recipes: Recipe[];
 
-  constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private recipeService: RecipeService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private authService: AuthService) { }
 
   ngOnInit() {
    this.subscription = this.recipeService.recipeChanged.subscribe(
