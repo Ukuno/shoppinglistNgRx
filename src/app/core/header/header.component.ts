@@ -29,4 +29,13 @@ export class HeaderComponent implements OnInit {
     this.dataSave.fetchData();
   }
 
+  isLogOut() {
+    this.authService.isLogOut();
+  }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
+
+
 }

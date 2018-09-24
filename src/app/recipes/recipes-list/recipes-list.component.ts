@@ -39,4 +39,8 @@ recipes: Recipe[];
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
 }
