@@ -14,16 +14,16 @@ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     SharedModule,
     AppRoutingModule
   ],
   exports: [
-    HeaderComponent,
-    AppRoutingModule
+    AppRoutingModule,
+    HeaderComponent
   ],
   providers: [ShoppingListService, RecipeService, DataSave, AuthService, ConfigFile]
 })
