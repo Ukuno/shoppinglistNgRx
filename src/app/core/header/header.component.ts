@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataSave } from '../shared/data-save-service';
+import { DataSave } from '../../shared/data-save-service';
 import { Response } from '@angular/http';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 
 
 @Component({
