@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataSave } from '../../shared/data-save-service';
-import { Response } from '@angular/http';
 import { AuthService } from '../../auth/auth.service';
+import { HttpEvent } from '@angular/common/http';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   onSave() {
     this.dataSave.saveData()
     .subscribe(
-      (response: Response) => {
+      (response: HttpEvent<object>) => {
       }
     );
   }

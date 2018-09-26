@@ -3,7 +3,7 @@ import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 
 @Injectable()
 export class DataSave {
@@ -12,15 +12,15 @@ export class DataSave {
 
   saveData() {
     const token = this.authService.getToken();
-    return this.httpClient.put('https://recipe-book-ukuno.firebaseio.com/recipe.json', this.recipeService.getRecipe(), {
-      params: new HttpParams().set('auth', token)
-    });
+    // return this.httpClient.put('https://recipe-book-ukuno.firebaseio.com/recipe.json', this.recipeService.getRecipe(), {
+    //   params: new HttpParams().set('auth', token)
+    // });
+    const req = new HttpRequest('PUT', 'https://recipe-book-ukuno.firebaseio.com/recipe.json',          this.recipeService.getRecipe());
+    return this.httpClient.request(req);
   }
   fetchData() {
     const token = this.authService.getToken();
-    return this.httpClient.get<Recipe[]>('https://recipe-book-ukuno.firebaseio.com/recipe.json', {
-      params: new HttpParams().set('auth', token)
-    })
+    return this.httpClient.get<Recipe[]>('https://recipe-book-ukuno.firebaseio.com/recipe.json')
     .pipe(map(
       (recipes) => {
         // const recipes: Recipe[] = response.json();

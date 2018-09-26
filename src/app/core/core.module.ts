@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from '../app-router.module';
 
 import { HeaderComponent } from './header/header.component';
@@ -12,6 +12,8 @@ import { AuthService } from '../auth/auth.service';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { ConfigFile } from '../config';
 import { SharedModule } from '../shared/shared.module';
+
+import { AuthInterceptor } from '../shared/auth.interceptor';
 
 
 @NgModule({
@@ -27,7 +29,14 @@ import { SharedModule } from '../shared/shared.module';
     AppRoutingModule,
     HeaderComponent
   ],
-  providers: [ShoppingListService, RecipeService, DataSave, AuthService, ConfigFile]
+  providers: [
+    ShoppingListService,
+    RecipeService,
+    DataSave,
+    AuthService,
+    ConfigFile,
+  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+]
 })
 export class CoreModule {
 
