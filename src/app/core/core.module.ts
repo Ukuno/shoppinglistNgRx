@@ -14,6 +14,7 @@ import { ConfigFile } from '../config';
 import { SharedModule } from '../shared/shared.module';
 
 import { AuthInterceptor } from '../shared/auth.interceptor';
+import { LoggingInterceptor } from '../shared/loggin.interceptor';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AuthInterceptor } from '../shared/auth.interceptor';
     DataSave,
     AuthService,
     ConfigFile,
-  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}
 ]
 })
 export class CoreModule {
