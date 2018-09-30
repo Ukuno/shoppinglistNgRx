@@ -1,23 +1,23 @@
 import * as Action from './shopping-list.action';
-import { Ingredient } from '../../Shared/ingredient.model';
+import { Ingredient } from '../../shared/ingredient.model';
 
 
 
-const initalState = {
-  ingredient: [
+const initialState = {
+  ingredients: [
     new Ingredient('Apple', 5),
     new Ingredient('Banana', 10),
 ]
 };
 
-export function shoppingListReducer(state = initalState, action: Action.ShoppingListAction) {
+export function shoppingListReducer(state = initialState, action: Action.ShoppingListAction) {
 
   switch (action.type) {
 
     case Action.ADD_INGREDIENT:
           return {
             ...state,
-            ingredient: [...state.ingredient, action.payload]
+            ingredient: [...state.ingredients, action.payload]
           };
     default:
           return state;
