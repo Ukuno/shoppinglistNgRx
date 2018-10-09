@@ -4,6 +4,8 @@ import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs/Subject';
 import { DataSave } from '../shared/data-save-service';
+import { Store } from '@ngrx/store';
+import * as Action from '../shopping-list/ngrx/shopping-list.action';
 
 @Injectable()
 export class RecipeService implements OnInit {
@@ -31,7 +33,7 @@ export class RecipeService implements OnInit {
     ])
      ];
 
-     constructor(private slService: ShoppingListService, ) {}
+     constructor(private store: Store<{shoppingList: {ingredients: Ingredient[]}}>) {}
      ngOnInit() {
      }
      setRecipe(fetchedRecipe: Recipe[]) {
@@ -47,8 +49,10 @@ export class RecipeService implements OnInit {
     }
 
     addIngredientToShoppingList(ingredients: Ingredient[]) {
-        this.slService.addIngredients(ingredients);
-    }
+      // this.slService.addIngredients(ingredients);
+      console.log(this.store.select('shoppingList'));
+      this.store.dispatch(new Action.AddMultiIngredients(ingredients));
+  }
 
     addRecipe(newRecipe: Recipe) {
       this.recipes.push(newRecipe);

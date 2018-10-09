@@ -5,7 +5,7 @@ import { Ingredient } from '../../shared/ingredient.model';
 
 const initialState = {
   ingredients: [
-    new Ingredient('Apple', 5),
+    new Ingredient('Apple', 50),
     new Ingredient('Banana', 10),
 ]
 };
@@ -18,6 +18,11 @@ export function shoppingListReducer(state = initialState, action: Action.Shoppin
           return {
             ...state,
             ingredients: [...state.ingredients, action.payload]
+          };
+    case Action.ADD_MULTI_INGREDIENTS:
+          return {
+            ...state,
+            ingredients: [...state.ingredients, ...action.payload]
           };
     default:
           return state;
