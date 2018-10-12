@@ -1,11 +1,11 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs/Subject';
 import { DataSave } from '../shared/data-save-service';
 import { Store } from '@ngrx/store';
 import * as Action from '../shopping-list/ngrx/shopping-list.action';
+import * as fromReducer from '../shopping-list/ngrx/shopping-list.reducer';
 
 @Injectable()
 export class RecipeService implements OnInit {
@@ -33,7 +33,7 @@ export class RecipeService implements OnInit {
     ])
      ];
 
-     constructor(private store: Store<{shoppingList: {ingredients: Ingredient[]}}>) {}
+     constructor(private store: Store<fromReducer.AppState>) {}
      ngOnInit() {
      }
      setRecipe(fetchedRecipe: Recipe[]) {
