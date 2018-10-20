@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { DataSave } from '../shared/data-save-service';
 import { Store } from '@ngrx/store';
 import * as Action from '../shopping-list/ngrx/shopping-list.action';
-import * as fromReducer from '../shopping-list/ngrx/shopping-list.reducer';
+import * as AppReducer from '../store/app.reducer';
 
 @Injectable()
 export class RecipeService implements OnInit {
@@ -33,7 +33,7 @@ export class RecipeService implements OnInit {
     ])
      ];
 
-     constructor(private store: Store<fromReducer.AppState>) {}
+     constructor(private store: Store<AppReducer.AppState>) {}
      ngOnInit() {
      }
      setRecipe(fetchedRecipe: Recipe[]) {

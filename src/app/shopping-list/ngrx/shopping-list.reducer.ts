@@ -1,9 +1,7 @@
 import * as Action from './shopping-list.action';
 import { Ingredient } from '../../shared/ingredient.model';
 
-export interface AppState {
-  shoppingList: State;
-}
+
 
 export interface State {
   ingredients: Ingredient[];
@@ -11,7 +9,7 @@ export interface State {
   editedIngredientIndex: number;
 }
 
-const initialState = {
+const initialState: State = {
   ingredients: [
     new Ingredient('Apple', 500),
     new Ingredient('Banana', 100),
@@ -20,7 +18,7 @@ const initialState = {
   editedIngredientIndex: -1
 };
 
-export function shoppingListReducer(state = initialState, action: Action.ShoppingListAction) {
+export function shoppingListReducer(state = initialState, action: Action.ShoppingListAction): State {
 
   switch (action.type) {
 
@@ -39,6 +37,12 @@ export function shoppingListReducer(state = initialState, action: Action.Shoppin
                 addedIngredients.splice(i , 1);
               }
             }
+            // addedIngredients.map((data, index) => {
+            //   if ( entry.name === data.name) {
+            //         entry.amount += data.amount;
+            //         addedIngredients.splice(index , 1);
+            //       }
+            // })
           });
           return {
             ...state,
