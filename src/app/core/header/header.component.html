@@ -16,7 +16,7 @@
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-        <ng-template [ngIf]="!isAuthenticated()">
+        <ng-template [ngIf]="!(authState | async).isAuthenticated">
             <li>
                 <a routerLink="/signup">Register</a>
               </li>
@@ -25,7 +25,7 @@
               </li>
         </ng-template>
 
-				<li class="dropdown" appdropdown *ngIf="isAuthenticated()">
+				<li class="dropdown" appdropdown *ngIf="(authState | async).isAuthenticated">
 					<a  class="dropdown-toggle" role="button" >Manage<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a (click)="onSave()">Save data</a></li>

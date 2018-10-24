@@ -7,6 +7,10 @@ import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { AuthService } from '../../auth/auth.service';
 
+import * as AppReducer from '../../store/app.reducer';
+import * as AuthReducer from '../../auth/ngrx/auth.reducer';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -18,13 +22,16 @@ export class RecipesListComponent implements OnInit, OnDestroy {
 subscription: Subscription;
 
 recipes: Recipe[];
+authState: Observable<AuthReducer.State>;
 
   constructor(private recipeService: RecipeService,
               private router: Router,
               private route: ActivatedRoute,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private store: Store<AppReducer.AppState>) { }
 
   ngOnInit() {
+    this.authState = this.store.select('auth');
    this.subscription = this.recipeService.recipeChanged.subscribe(
       (recipe: Recipe[]) => {
         this.recipes = recipe;
@@ -40,7 +47,7 @@ recipes: Recipe[];
     this.subscription.unsubscribe();
   }
 
-  isAuthenticated() {
-    return this.authService.isAuthenticated();
-  }
+  // isAuthenticated() {
+  //   return this.authService.isAuthenticated();
+  // }
 }

@@ -3,6 +3,11 @@ import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import * as AppReducer from '../../store/app.reducer';
+import * as AuthReducer from '../../auth/ngrx/auth.reducer';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
 
 @Component({
   selector: 'app-recipes-detail',
@@ -13,14 +18,16 @@ export class RecipesDetailComponent implements OnInit {
 
   recipe: Recipe;
   id: number;
-
+  authState: Observable<AuthReducer.State>;
 
   constructor(private recipeService: RecipeService,
               private route: ActivatedRoute,
               private router: Router,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private store: Store<AppReducer.AppState>) { }
 
   ngOnInit() {
+    this.authState = this.store.select('auth');
     const id = this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
@@ -41,8 +48,8 @@ export class RecipesDetailComponent implements OnInit {
     this.router.navigate(['recipe']);
   }
 
-  isAuthenticated() {
-    return this.authService.isAuthenticated();
-  }
+  // isAuthenticated() {
+  //   return this.authService.isAuthenticated();
+  // }
 
 }

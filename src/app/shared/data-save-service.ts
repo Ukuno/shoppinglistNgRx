@@ -12,7 +12,7 @@ export class DataSave {
 
 
   saveData() {
-    const token = this.authService.getToken();
+    // const token = this.authService.getToken();
     // return this.httpClient.put('https://recipe-book-ukuno.firebaseio.com/recipe.json', this.recipeService.getRecipe(), {
     //   params: new HttpParams().set('auth', token)
     // });
@@ -20,7 +20,7 @@ export class DataSave {
     return this.httpClient.request(req);
   }
   fetchData() {
-    const token = this.authService.getToken();
+    // const token = this.authService.getToken();
     return this.httpClient.get<Recipe[]>('https://recipe-book-ukuno.firebaseio.com/recipe.json')
     .map(
       (recipes) => {

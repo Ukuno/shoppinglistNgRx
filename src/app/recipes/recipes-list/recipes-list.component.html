@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-xs-12" *ngIf='isAuthenticated()'>
+	<div class="col-xs-12" *ngIf="(authState | async).isAuthenticated">
     <button class="btn btn-success" (click)="newRecipe()">New Recipe</button>
     <hr>
   </div>
