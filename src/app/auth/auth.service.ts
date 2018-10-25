@@ -18,6 +18,12 @@ export class AuthService {
     .then(
       user => {
         this.store.dispatch(new AuthAction.Register());
+        firebase.auth().currentUser.getIdToken()
+        .then(
+          (token: string) =>  {
+            this.store.dispatch(new AuthAction.SetToken(token));
+          }
+        );
       }
     )
     .catch(
