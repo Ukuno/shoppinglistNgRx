@@ -25,6 +25,11 @@ export function authReducer(state = initialState, action: Action.AuthAction): St
         token: null,
         isAuthenticated: false
       };
+      case( Action.SET_TOKEN):
+      return {
+        ...state,
+        token: action.payload
+      };
     default:
       return state;
   }
