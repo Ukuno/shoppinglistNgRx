@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
-import { AuthService } from '../../auth/auth.service';
 
 import * as AppReducer from '../../store/app.reducer';
 import * as AuthReducer from '../../auth/ngrx/auth.reducer';
@@ -27,7 +26,6 @@ authState: Observable<AuthReducer.State>;
   constructor(private recipeService: RecipeService,
               private router: Router,
               private route: ActivatedRoute,
-              private authService: AuthService,
               private store: Store<AppReducer.AppState>) { }
 
   ngOnInit() {
@@ -47,7 +45,5 @@ authState: Observable<AuthReducer.State>;
     this.subscription.unsubscribe();
   }
 
-  // isAuthenticated() {
-  //   return this.authService.isAuthenticated();
-  // }
+
 }

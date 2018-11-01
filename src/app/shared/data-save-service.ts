@@ -3,12 +3,11 @@ import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
 import 'rxjs/Rx';
 // import { map } from 'rxjs/operators';
-import { AuthService } from '../auth/auth.service';
 import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 
 @Injectable()
 export class DataSave {
-  constructor( private httpClient: HttpClient, private recipeService: RecipeService, private authService: AuthService) {}
+  constructor( private httpClient: HttpClient, private recipeService: RecipeService) {}
 
 
   saveData() {

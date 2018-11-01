@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
 import * as AppReducer from '../../store/app.reducer';
 import * as AuthReducer from '../../auth/ngrx/auth.reducer';
 import { Observable } from 'rxjs';
@@ -23,7 +22,6 @@ export class RecipesDetailComponent implements OnInit {
   constructor(private recipeService: RecipeService,
               private route: ActivatedRoute,
               private router: Router,
-              private authService: AuthService,
               private store: Store<AppReducer.AppState>) { }
 
   ngOnInit() {
@@ -48,8 +46,6 @@ export class RecipesDetailComponent implements OnInit {
     this.router.navigate(['recipe']);
   }
 
-  // isAuthenticated() {
-  //   return this.authService.isAuthenticated();
-  // }
+
 
 }

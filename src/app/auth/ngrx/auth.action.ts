@@ -5,6 +5,7 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = ' LOGOUT';
 export const SET_TOKEN = 'SET_TOKEN';
 export const TRY_SIGNUP = 'TRY_SIGNUP';
+export const TRY_SIGNIN = 'TRY_SIGNIN';
 
 
 export class TrySignUp implements Action {
@@ -14,6 +15,11 @@ export class TrySignUp implements Action {
 
 export class Register implements Action {
   readonly type = REGISTER;
+}
+
+export class TrySignIn implements Action {
+  readonly type = TRY_SIGNIN;
+  constructor(public payload: {username: string, password: string}) {}
 }
 
 export class LogIn implements Action {
@@ -29,4 +35,4 @@ export class SetToken implements Action {
   constructor(public payload: string) {}
 }
 
-export type AuthAction = Register | LogIn | LogOut | SetToken | TrySignUp;
+export type AuthAction = Register | LogIn | LogOut | SetToken | TrySignUp | TrySignIn;
