@@ -11,6 +11,9 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { CoreModule } from './core/core.module';
 import { reducers } from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 import { AuthEffects } from './auth/ngrx/auth.effects';
 
 
@@ -29,7 +32,9 @@ import { AuthEffects } from './auth/ngrx/auth.effects';
     ShoppingListModule,
     CoreModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    StoreRouterConnectingModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   bootstrap: [AppComponent]
 })

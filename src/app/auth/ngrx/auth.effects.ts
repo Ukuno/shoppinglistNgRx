@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class AuthEffects {
@@ -58,6 +59,11 @@ export class AuthEffects {
                                   }
                                   ];
                               });
+    @Effect({dispatch: false})
+    authLogout = this.action$.ofType(AuthAction.LOGOUT)
+      .do(() => {
+        this.route.navigate(['/']);
+      });
     constructor( private action$: Actions, private route: Router) {}
 }
 

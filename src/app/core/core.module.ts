@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 
 import { RecipeService } from '../recipes/recipe.service';
 import { DataSave } from '../shared/data-save-service';
-// import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { ConfigFile } from '../config';
 import { SharedModule } from '../shared/shared.module';
 
@@ -30,7 +29,6 @@ import { LoggingInterceptor } from '../shared/loggin.interceptor';
     HeaderComponent
   ],
   providers: [
-    // ShoppingListService,
     RecipeService,
     DataSave,
     ConfigFile,
